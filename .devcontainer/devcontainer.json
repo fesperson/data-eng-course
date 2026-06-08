@@ -1,0 +1,17 @@
+{
+  "name": "PySpark Course",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "forwardPorts": [8888, 4040],
+  "portsAttributes": {
+    "4040": { "label": "Spark UI", "onAutoForward": "notify" },
+    "8888": { "label": "Jupyter", "onAutoForward": "openBrowser" }
+  },
+  "postStartCommand": "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root &",
+  "extensions": [
+    "ms-python.python",
+    "ms-toolsai.jupyter"
+  ]
+}
